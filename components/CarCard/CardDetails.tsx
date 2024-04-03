@@ -12,6 +12,12 @@ interface CarDetailsProps {
 }
 
 const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
+  const modifiedCar = {
+    ...car,
+    transmission: car.transmission === 'm' ? 'Manual' : 'Automatic',
+    drive: car.drive.toUpperCase(),
+  };
+
   return (
     <>
       <Transition
@@ -61,8 +67,8 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       className='object-contain'
                     />
                   </button>
-                  <div className='flex-1 flex-col gap-3'>
-                    <div className='relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg'>
+                  <div className='flex flex-col gap-3'>
+                    <div className='car-details__main-image'>
                       <Image
                         src='/hero.png'
                         alt='car model'
@@ -72,7 +78,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       />
                     </div>
                     <div className='flex gap-3'>
-                      <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
+                      <div className='flex relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                         <Image
                           src='/hero.png'
                           alt='car model'
@@ -81,7 +87,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           className='object-contain'
                         />
                       </div>
-                      <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
+                      <div className='flex relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                         <Image
                           src='/hero.png'
                           alt='car model'
@@ -90,7 +96,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           className='object-contain'
                         />
                       </div>
-                      <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
+                      <div className='flex relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                         <Image
                           src='/hero.png'
                           alt='car model'
@@ -99,6 +105,26 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           className='object-contain'
                         />
                       </div>
+                    </div>
+                  </div>
+                  <div className='flex flex-col gap-2'>
+                    <h2 className='font-semibold text-xl capitalize'>
+                      {modifiedCar.make} {modifiedCar.model}
+                    </h2>
+                    <div className='mt-3 flex-1 flex-wrap gap-4'>
+                      {Object.entries(modifiedCar).map(([key, value]) => (
+                        <div
+                          key={key}
+                          className='flex justify-between gap-5 w-full text-right mb-2'
+                        >
+                          <h4 className='text-grey capitalize'>
+                            {key.split('_').join(' ')}
+                          </h4>
+                          <p className='text-black-100 font-semibold capitalize'>
+                            {value}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </Dialog.Panel>
