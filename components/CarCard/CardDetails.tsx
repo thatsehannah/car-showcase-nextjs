@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CarProps } from '@/types';
+import { generateCarImageUrl } from '@/utils';
 
 interface CarDetailsProps {
   isOpen: boolean;
@@ -70,7 +71,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                   <div className='flex flex-col gap-3'>
                     <div className='car-details__main-image'>
                       <Image
-                        src='/hero.png'
+                        src={generateCarImageUrl(car)}
                         alt='car model'
                         fill
                         priority
@@ -80,7 +81,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                     <div className='flex gap-3'>
                       <div className='flex relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                         <Image
-                          src='/hero.png'
+                          src={generateCarImageUrl(car, '29')}
                           alt='car model'
                           fill
                           priority
@@ -89,7 +90,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       </div>
                       <div className='flex relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                         <Image
-                          src='/hero.png'
+                          src={generateCarImageUrl(car, '33')}
                           alt='car model'
                           fill
                           priority
@@ -98,7 +99,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       </div>
                       <div className='flex relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                         <Image
-                          src='/hero.png'
+                          src={generateCarImageUrl(car, '13')}
                           alt='car model'
                           fill
                           priority

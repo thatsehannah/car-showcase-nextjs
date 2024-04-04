@@ -7,7 +7,7 @@ export async function fetchCars() {
   };
 
   const response = await fetch(
-    'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=carrera',
+    'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=camry',
     {
       headers: headers,
     }
@@ -33,7 +33,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   return rentalRatePerDay.toFixed(0);
 };
 
-export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+export const generateCarImageUrl = (car: CarProps, angle = '') => {
   const url = new URL('https://cdn.imagin.studio/getimage');
   const { make, year, model } = car;
 
