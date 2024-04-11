@@ -1,4 +1,5 @@
 import { Hero, SearchBar, CarCard } from '@/components';
+import { fuels, yearsOfProduction } from '@/constants';
 import { CustomFilter } from '@/molecules';
 import { fetchCars } from '@/utils';
 
@@ -10,6 +11,7 @@ export default async function Home({ searchParams }) {
     limit: searchParams.limit || 10,
     model: searchParams.model || '',
   });
+
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
@@ -26,8 +28,14 @@ export default async function Home({ searchParams }) {
         <div className='home__filters'>
           <SearchBar />
           <div className='home__filter-container'>
-            <CustomFilter />
-            <CustomFilter />
+            <CustomFilter
+              title='fuel'
+              options={fuels}
+            />
+            <CustomFilter
+              title='year'
+              options={yearsOfProduction}
+            />
           </div>
         </div>
 
